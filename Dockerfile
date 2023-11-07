@@ -4,7 +4,13 @@ FROM node:lts
 # Crea y cambia el destino actual a /app
 WORKDIR /app
 
-# Copiamos el contenido del proyecto a /app
+# Copiamos el archivo de dependencias
+COPY ./package*.json /app/
+
+#Instalar las dependencias
+RUN npm install
+
+#Copiamos el contenido del proyecto a /app
 COPY . /app/
 
 # Exponer puerto 80
