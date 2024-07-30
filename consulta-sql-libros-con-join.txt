@@ -1,0 +1,26 @@
+select libros.titulo, libros.edicion,autores.nombre as nombre_autor,autores.apellidos as apellido_autor, editoriales.nombre as nombre_editorial, temas.nombre as nombre_tema from libros INNER JOIN autores ON libros.fk_id_autor = autores.id_autor INNER JOIN editoriales on libros.fk_id_editorial = editoriales.id_editorial INNER JOIN temas ON libros.fk_id_tema = temas.id_tema;
+
+
+select libros.titulo, libros.edicion,autores.nombre as nombre_autor,autores.apellidos as apellido_autor, editoriales.nombre as nombre_editorial, temas.nombre as nombre_tema from libros 
+INNER JOIN autores ON libros.fk_id_autor = autores.id_autor 
+INNER JOIN editoriales on libros.fk_id_editorial = editoriales.id_editorial 
+INNER JOIN temas ON libros.fk_id_tema = temas.id_tema;
+
+ select `libros`.`titulo, libros`.`edicion,autores`.`nombre` as `nombre_autor,autores.apellidos as apellido_autor, editoriales.nombre as nombre_editorial, temas.nombre as nombre_tema` from `libros` as `l` inner join `autores` as `a` on `a`.`id_autor` = `l`.`fk_id_autor` inner join `editoriales` as `e` on `e`.`id_editorial` = `l`.`fk_id_editorial` inner join `temas` as `t` on `t`.`id_tema` = `l`.`fk_id_tema` - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '.`nombre` as `nombre_autor,autores.apellidos as apellido_autor, editoriales.n...'
+
+const posts = await db('posts as p')
+  .join('users as u', 'u.id', 'p.user_id')
+  .select('p.id', 'u.username', 'p.contents')
+  .where({user_id: id})
+
+const posts = await db('posts')
+  .join('users', 'users.id', 'posts.user_id')
+  .select('posts.id', 'users.username', 'posts.contents')
+  .where({user_id: id})
+
+
+const libros = await db('libros as l')
+.join('autores as a','a.id_autor',l.fk_id_autor)
+.join('editoriales as e','e.id_editorial',l.fk_id_editorial)
+.join('temas as t','t.id_tema','l.fk_id_tema')
+.select(libros.titulo, libros.edicion,autores.nombre as nombre_autor,autores.apellidos as apellido_autor, editoriales.nombre as nombre_editorial, temas.nombre as nombre_tema)
